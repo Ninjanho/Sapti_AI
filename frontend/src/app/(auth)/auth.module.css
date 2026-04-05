@@ -1,0 +1,127 @@
+/* ============================================
+   Auth Pages (Login / Signup) Styles
+   ============================================ */
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-xl);
+  position: relative;
+}
+
+.bgGradient {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(
+      ellipse 60% 50% at 50% 0%,
+      rgba(108, 99, 255, 0.1) 0%,
+      transparent 70%
+    ),
+    var(--bg-primary);
+  z-index: 0;
+}
+
+.card {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 420px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: var(--space-xl);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: var(--space-xl);
+}
+
+.logoOrb {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-warm));
+  margin: 0 auto var(--space-md);
+  cursor: pointer;
+  animation: orbPulse 3s ease-in-out infinite;
+  transition: transform var(--transition-base);
+}
+
+.logoOrb:hover {
+  transform: scale(1.1);
+}
+
+.header h1 {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: var(--space-xs);
+}
+
+.header p {
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.googleBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin: var(--space-lg) 0;
+  color: var(--text-tertiary);
+  font-size: 13px;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--border-default);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.field label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.error {
+  font-size: 13px;
+  color: var(--accent-red);
+  text-align: center;
+}
+
+.footer {
+  text-align: center;
+  margin-top: var(--space-lg);
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.footer a {
+  color: var(--accent-primary);
+  font-weight: 500;
+}

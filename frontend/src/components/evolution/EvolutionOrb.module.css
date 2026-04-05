@@ -1,0 +1,29 @@
+.container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.orb {
+  position: absolute;
+  inset: 20%;
+  border-radius: 50%;
+  animation: orbPulse 4s ease-in-out infinite;
+}
+
+.ring {
+  position: absolute;
+  inset: 8%;
+  border-radius: 50%;
+  border: 1px solid;
+  animation: orbPulse 4s ease-in-out infinite 0.5s;
+}
+
+.outerRing {
+  position: absolute;
+  inset: -5%;
+  border-radius: 50%;
+  border: 1px solid;
+  animation: orbPulse 4s ease-in-out infinite 1s;
+}

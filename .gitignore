@@ -1,0 +1,78 @@
+# --- Sapti AI Master Git Ignore ---
+
+# 🌐 System & OS
+.DS_Store
+Thumbs.db
+*.log
+*.swp
+*.tmp
+*.bak
+
+# 🖥 IDEs
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# 🔐 Environment & Secrets (MANDATORY REGULATION)
+# Ignore ALL environment variable files across the entire monorepo
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.production
+.env.development
+.env.*
+*.pem
+*.key
+
+# --- ALLOWED ENV EXAMPLES (Safe to push) ---
+# Do not ignore files ending in .example
+!.env.example
+!backend/.env.example
+!frontend/.env.example
+
+# 📦 Dependencies
+node_modules/
+**/node_modules/
+.venv/
+**/ .venv/
+env/
+venv/
+ENV/
+.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# 🏗 Build & Compiled Files
+.next/
+**/ .next/
+out/
+**/out/
+build/
+dist/
+**/dist/
+__pycache__/
+**/__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.pyd
+*.egg-info/
+.python-version
+.vercel/
+.turbo/
+next-env.d.ts
+
+# 💾 Database & Supabase
+supabase/.temp/
+
+# 🧪 Testing & Coverage
+coverage/
+**/coverage/
+.tsbuildinfo

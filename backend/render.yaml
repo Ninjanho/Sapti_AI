@@ -1,0 +1,28 @@
+services:
+  - type: web
+    name: sapti-backend
+    runtime: docker
+    repo: https://github.com/your-username/sapti-ai
+    dockerfilePath: ./backend/Dockerfile
+    dockerContext: ./backend
+    plan: free
+    envVars:
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_ANON_KEY
+        sync: false
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
+      - key: SUPABASE_JWT_SECRET
+        sync: false
+      - key: DEFAULT_LLM_PROVIDER
+        value: gemini
+      - key: DEFAULT_LLM_API_KEY
+        sync: false
+      - key: GEMINI_EMBEDDING_API_KEY
+        sync: false
+      - key: ENCRYPTION_KEY
+        sync: false
+      - key: CORS_ORIGINS
+        value: '["https://your-app.vercel.app"]'
+    healthCheckPath: /health
