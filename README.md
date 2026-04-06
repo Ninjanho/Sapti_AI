@@ -4,7 +4,7 @@
 
 > {In the Rig Veda, it refers to a team of seven horses pulling a chariot — a metaphor for multiple processes moving one system.} 
 
-A production-grade evolving AI companion system inspired by Samantha from the movie *Her* and the Hive Mind protocol. Sapti learns, remembers, and grows wiser with every conversation.
+A production-grade evolving AI system (AI companion), inspired by Samantha from the movie *Her*. Sapti learns, remembers, and grows wiser with every conversation (with personal memory and *Hive Mind* evolution).
 
 ---
 
