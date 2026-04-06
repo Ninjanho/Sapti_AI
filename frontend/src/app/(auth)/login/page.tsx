@@ -1,16 +1,49 @@
 "use client";
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useState, useEffect } from "react";
+import { useRouter, usePathname } from "next/navigation";
+import Link from "next/link";
 import { createClient } from "@/lib/supabase/client";
 import styles from "../auth.module.css";
 
 export default function LoginPage() {
   const router = useRouter();
+  const pathname = usePathname();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const supabase = createClient();
+    
+    // Initial check
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      if (session) {
+        router.replace("/chat");
+      }
+    });
+
+    // Listen for auth changes (catches session on back/forward soft navigation)
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      if (session) {
+        router.replace("/chat");
+      }
+    });
+
+    // Defeat the Browser's bfcache (Back-Forward Cache) for hard OAuth navigations
+    const handlePageShow = (event: PageTransitionEvent) => {
+      if (event.persisted) {
+        window.location.reload();
+      }
+    };
+    window.addEventListener("pageshow", handlePageShow);
+
+    return () => {
+      subscription.unsubscribe();
+      window.removeEventListener("pageshow", handlePageShow);
+    };
+  }, [router, pathname]);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -27,7 +60,7 @@ export default function LoginPage() {
       setError(error.message);
       setLoading(false);
     } else {
-      router.push("/chat");
+      router.replace("/chat");
     }
   };
 
@@ -46,6 +79,11 @@ export default function LoginPage() {
       <div className={styles.bgGradient} />
 
       <div className={styles.card}>
+        <div style={{ marginBottom: "1.5rem", textAlign: "left" }}>
+          <Link href="/" style={{ color: "var(--text-secondary)", fontSize: "0.9rem", display: "inline-flex", alignItems: "center", gap: "0.5rem" }}>
+            <span>←</span> Back to Home
+          </Link>
+        </div>
         <div className={styles.header}>
           <div
             className={styles.logoOrb}

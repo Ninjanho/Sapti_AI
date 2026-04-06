@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { createClient } from "@/lib/supabase/client";
 import styles from "./page.module.css";
 
@@ -22,7 +23,7 @@ export default function LandingPage() {
     const supabase = createClient();
     supabase.auth.getSession().then(({ data: { session } }) => {
       if (session) {
-        router.push("/chat");
+        router.replace("/chat");
       }
     });
 
@@ -85,7 +86,7 @@ export default function LandingPage() {
         <p className={styles.heroSubtitle}>
           An AI that{" "}
           <span className={styles.highlight}>evolves</span> with every
-          conversation. Powered by the Hive Mind Protocol — collective
+          conversation. Powered by the <span className={styles.highlight}>Hive Mind</span> Protocol — collective
           intelligence, personal memory, genuine connection.
         </p>
 
@@ -164,13 +165,28 @@ export default function LandingPage() {
 
       {/* Footer */}
       <footer className={styles.footer}>
-        <p>
-          <span className="text-gradient">Sapti AI</span> — Building Evolving
-          Super Intelligence
-        </p>
-        <p className="text-sm text-secondary">
-          Named after the seven horses of the Rig Veda
-        </p>
+        <div className={styles.footerContent}>
+          <div className={styles.footerColumn}>
+            <h4><span className="text-gradient">Sapti AI</span></h4>
+            <p>
+              Named after the <span style={{ color: "var(--accent-primary)" }}>seven horses</span> of the <span style={{ color: "var(--accent-primary)" }}>Rig Veda</span> — An experiment in evolving intelligence powered by the <span style={{ color: "var(--accent-primary)" }}>Hive Mind</span> Protocol, and inspired by Samantha from <span style={{ color: "var(--accent-primary)" }}>Her</span>.
+            </p>
+          </div>
+          <div className={styles.footerColumn}>
+            <h4>Project</h4>
+            <Link href="/about" className={styles.footerLink}>About Sapti</Link>
+            <Link href="https://github.com/imtej/Sapti_AI" className={styles.footerLink} target="_blank" rel="noopener noreferrer">GitHub Repository</Link>
+          </div>
+          <div className={styles.footerColumn}>
+            <h4>Legal & Transparency</h4>
+            <Link href="/privacy" className={styles.footerLink}>Privacy & Transparency</Link>
+            <Link href="/terms" className={styles.footerLink}>Terms of Service</Link>
+          </div>
+        </div>
+
+        <div className={styles.footerBottom}>
+          <p>© {new Date().getFullYear()} Sapti AI: Named after the seven horses of the Rig Veda</p>
+        </div>
       </footer>
     </div>
   );

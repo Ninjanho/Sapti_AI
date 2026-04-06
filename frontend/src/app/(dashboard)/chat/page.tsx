@@ -32,6 +32,13 @@ export default function ChatPage() {
   const [isStreaming, setIsStreaming] = useState(false);
   const [streamingContent, setStreamingContent] = useState("");
   const [sidebarOpen, setSidebarOpen] = useState(true);
+
+  // Responsive sidebar: close on mobile by default
+  useEffect(() => {
+    if (typeof window !== "undefined" && window.innerWidth <= 768) {
+      setSidebarOpen(false);
+    }
+  }, []);
   const [freeChatsRemaining, setFreeChatsRemaining] = useState<number | null>(null);
   const [isWaking, setIsWaking] = useState(false);
 
@@ -90,6 +97,11 @@ export default function ChatPage() {
       const data = await api.getConversation(convId, token);
       setMessages(data.messages || []);
       setActiveConvId(convId);
+      
+      // Auto-collapse sidebar on mobile
+      if (typeof window !== "undefined" && window.innerWidth <= 768) {
+        setSidebarOpen(false);
+      }
     } catch (err) {
       console.error("Failed to load conversation:", err);
     }
@@ -228,6 +240,11 @@ export default function ChatPage() {
     setActiveConvId(null);
     setMessages([]);
     setStreamingContent("");
+    
+    // Auto-collapse sidebar on mobile
+    if (typeof window !== "undefined" && window.innerWidth <= 768) {
+      setSidebarOpen(false);
+    }
   };
 
   const deleteConversation = async (convId: string) => {

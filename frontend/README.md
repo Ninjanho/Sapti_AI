@@ -76,7 +76,11 @@ frontend/
 │   │   │   ├── chat/page.tsx         # SSE-based token-streaming interface
 │   │   │   ├── evolution/page.tsx    # Sapti's lifecycle & trait metrics
 │   │   │   ├── settings/page.tsx     # Profile & BYOK (Bring Your Own Key)
-│   │   │   └── layout.tsx            # Persistent sidebar & state wrapper
+│   │   │   ├── layout.tsx            # Persistent sidebar & state wrapper
+│   │   │   ├── (policies)/           # Static Legal & Info Pages
+│   │   │   │   ├── about/page.tsx    # Project philosophy & lore
+│   │   │   │   ├── privacy/page.tsx  # Target data usage and Hive Mind policy
+│   │   │   │   └── terms/page.tsx    # Hobby project AS-IS disclaimers
 │   │   ├── globals.css               # Design system tokens & CSS variables
 │   │   ├── layout.tsx                # Root provider & font configuration
 │   │   └── page.tsx                  # Premium landing page

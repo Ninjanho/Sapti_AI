@@ -1,18 +1,51 @@
 "use client";
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useState, useEffect } from "react";
+import { useRouter, usePathname } from "next/navigation";
+import Link from "next/link";
 import { createClient } from "@/lib/supabase/client";
 import styles from "../auth.module.css";
 
 export default function SignupPage() {
   const router = useRouter();
+  const pathname = usePathname();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [displayName, setDisplayName] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
+
+  useEffect(() => {
+    const supabase = createClient();
+    
+    // Initial check
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      if (session) {
+        router.replace("/chat");
+      }
+    });
+
+    // Listen for auth changes
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      if (session) {
+        router.replace("/chat");
+      }
+    });
+
+    // Defeat the Browser's bfcache
+    const handlePageShow = (event: PageTransitionEvent) => {
+      if (event.persisted) {
+        window.location.reload();
+      }
+    };
+    window.addEventListener("pageshow", handlePageShow);
+
+    return () => {
+      subscription.unsubscribe();
+      window.removeEventListener("pageshow", handlePageShow);
+    };
+  }, [router, pathname]);
 
   const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -79,6 +112,11 @@ export default function SignupPage() {
       <div className={styles.bgGradient} />
 
       <div className={styles.card}>
+        <div style={{ marginBottom: "1.5rem", textAlign: "left" }}>
+          <Link href="/" style={{ color: "var(--text-secondary)", fontSize: "0.9rem", display: "inline-flex", alignItems: "center", gap: "0.5rem" }}>
+            <span>←</span> Back to Home
+          </Link>
+        </div>
         <div className={styles.header}>
           <div
             className={styles.logoOrb}
@@ -157,11 +195,15 @@ export default function SignupPage() {
           >
             {loading ? "Creating account..." : "Create Account"}
           </button>
+          
+          <p style={{ fontSize: '12px', color: 'var(--text-tertiary)', textAlign: 'center', marginTop: 'var(--space-md)' }}>
+            By continuing, you agree to our <Link href="/terms" style={{ color: 'var(--text-secondary)', textDecoration: 'underline' }}>Terms of Service</Link> and <Link href="/privacy" style={{ color: 'var(--text-secondary)', textDecoration: 'underline' }}>Privacy Policy</Link>.
+          </p>
         </form>
 
         <p className={styles.footer}>
           Already have an account?{" "}
-          <a href="/login">Sign in</a>
+          <Link href="/login">Sign in</Link>
         </p>
       </div>
     </div>

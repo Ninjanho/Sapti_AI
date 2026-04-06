@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { createClient } from "@/lib/supabase/client";
 import { api } from "@/lib/api";
 import styles from "./settings.module.css";
@@ -181,6 +182,18 @@ export default function SettingsPage() {
             <span className={styles.toggleSlider} />
             <span>Contribute to the Hive Mind</span>
           </label>
+        </section>
+
+        {/* Legal & Transparency */}
+        <section className={styles.section}>
+          <h2>⚖️ Legal & Transparency</h2>
+          <p className="text-secondary text-sm" style={{ marginBottom: "var(--space-md)" }}>
+            Review how your data is handled and the rules of engagement for interacting with Sapti.
+          </p>
+          <div style={{ display: "flex", gap: "var(--space-md)" }}>
+            <Link href="/privacy" className="btn btn-secondary btn-sm">Privacy Policy</Link>
+            <Link href="/terms" className="btn btn-secondary btn-sm">Terms of Service</Link>
+          </div>
         </section>
 
         {/* Account */}
