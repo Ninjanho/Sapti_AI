@@ -58,8 +58,12 @@ SUPABASE_SERVICE_ROLE_KEY="your-service-role-key"  # Required for Admin backgrou
 SUPABASE_JWT_SECRET="your-jwt-secret"
 
 # LLM Configuration
-DEFAULT_LLM_PROVIDER="gemini"
-DEFAULT_LLM_API_KEY="your-gemini-key"
+DEFAULT_LLM_PROVIDER="name of the provider" # gemini, openai, anthropic
+DEFAULT_LLM_API_KEY="your-llm-api-key"
+
+# New variables for OpenAI-compatible endpoints
+CUSTOM_API_BASE="https://your-base-url/v1"
+CUSTOM_MODEL_NAME="name of the model"
 
 # Embedding settings
 GEMINI_EMBEDDING_API_KEY="your-gemini-key"

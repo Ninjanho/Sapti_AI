@@ -49,10 +49,12 @@ class Settings(BaseSettings):
     fast_model_temperature: float = 0.3
     fast_model_max_tokens: int = 1024
 
+    
     model_config = {
         "env_file": ".env",
         "env_file_encoding": "utf-8",
         "case_sensitive": False,
+        "extra": "ignore", # Fixes pydantic ValidationError for custom vars
     }
 
 

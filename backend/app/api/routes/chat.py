@@ -74,7 +74,6 @@ async def chat_stream(
     )
     profile = profile_result.data or {}
     encrypted_key = profile.get("encrypted_api_key")
-    provider = profile.get("llm_provider", settings.default_llm_provider)
     display_name = profile.get("display_name")
     free_chats_used = profile.get("free_chats_used", 0)
     is_trial = not encrypted_key and free_chats_used < settings.free_chat_limit
@@ -82,8 +81,10 @@ async def chat_stream(
     # Resolve the API key cleanly
     if encrypted_key:
         resolved_api_key = decrypt_api_key(encrypted_key)
+        provider = profile.get("llm_provider", settings.default_llm_provider)
     else:
         resolved_api_key = settings.default_llm_api_key
+        provider = settings.default_llm_provider
 
     async def event_generator():
         try:

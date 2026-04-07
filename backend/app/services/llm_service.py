@@ -31,6 +31,10 @@ PROVIDER_MODEL_MAP = {
         "main": "anthropic/claude-sonnet-4-20250514",
         "fast": "anthropic/claude-3-5-haiku-20241022",
     },
+    "model research GLM-5": {
+        "main": os.getenv("CUSTOM_MODEL_NAME", "openai/zai-org/GLM-5-FP8"),
+        "fast": os.getenv("CUSTOM_MODEL_NAME", "openai/zai-org/GLM-5-FP8"),
+    },
 }
 
 
@@ -40,19 +44,11 @@ class LLMService:
     def __init__(self, provider: str, api_key: str):
         self.provider = provider
         self.models = PROVIDER_MODEL_MAP.get(provider, PROVIDER_MODEL_MAP["gemini"])
-        self._set_api_key(provider, api_key)
-
-    def _set_api_key(self, provider: str, api_key: str):
-        """Set the API key for the chosen provider."""
-        key_map = {
-            "gemini": "GEMINI_API_KEY",
-            "openai": "OPENAI_API_KEY",
-            "anthropic": "ANTHROPIC_API_KEY",
-        }
-        env_var = key_map.get(provider)
-        if env_var:
-            os.environ[env_var] = api_key
-            logger.info("llm_api_key_set", provider=provider)
+        # Ensure we bind the key locally to the instance instead of globally
+        self.api_key = api_key
+        self.api_base = os.getenv("CUSTOM_API_BASE") if provider == "model research GLM-5" else None
+        # self._set_api_key(provider, api_key)
+        logger.info("llm_api_key_set", provider=provider)
 
     async def generate_stream(
         self,
@@ -69,13 +65,22 @@ class LLMService:
         all_messages = [{"role": "system", "content": system_prompt}] + messages
 
         try:
-            response = await acompletion(
-                model=self.models["main"],
-                messages=all_messages,
-                stream=True,
-                temperature=temp,
-                max_tokens=tokens,
-            )
+            
+            kwargs = {
+                "model": self.models["main"],
+                "messages": all_messages,
+                "stream": True,
+                "temperature": temp,
+                "max_tokens": tokens,
+                "api_key": self.api_key,
+            }
+            if self.api_base:
+                kwargs["api_base"] = self.api_base
+            
+            if self.provider == "model research GLM-5":
+                kwargs["extra_body"] = {"chat_template_kwargs": {"enable_thinking": False}}
+                
+            response = await acompletion(**kwargs)
 
             async for chunk in response:
                 delta = chunk.choices[0].delta
@@ -101,13 +106,22 @@ class LLMService:
         all_messages = [{"role": "system", "content": system_prompt}] + messages
 
         try:
-            response = await acompletion(
-                model=self.models["main"],
-                messages=all_messages,
-                stream=False,
-                temperature=temp,
-                max_tokens=tokens,
-            )
+            
+            kwargs = {
+                "model": self.models["main"],
+                "messages": all_messages,
+                "stream": False,
+                "temperature": temp,
+                "max_tokens": tokens,
+                "api_key": self.api_key,
+            }
+            if self.api_base:
+                kwargs["api_base"] = self.api_base
+            
+            if self.provider == "model research GLM-5":
+                kwargs["extra_body"] = {"chat_template_kwargs": {"enable_thinking": False}}
+                
+            response = await acompletion(**kwargs)
             return response.choices[0].message.content
 
         except Exception as e:
@@ -117,15 +131,22 @@ class LLMService:
     async def fast_extract(self, prompt: str, schema: type["BaseModel"] | None = None):
         """Use the fast/cheap model for extraction tasks (intent, memory)."""
         try:
+            
             kwargs = {
                 "model": self.models["fast"],
                 "messages": [{"role": "user", "content": prompt}],
                 "stream": False,
                 "temperature": 0.3,
                 "max_tokens": 2056,  # Bumped from 1024 to prevent Array cutoff
+                "api_key": self.api_key,
             }
+            if self.api_base:
+                kwargs["api_base"] = self.api_base
             if schema:
                 kwargs["response_format"] = schema
+                
+            if self.provider == "model research GLM-5":
+                kwargs["extra_body"] = {"chat_template_kwargs": {"enable_thinking": False}}
                 
             response = await acompletion(**kwargs)
             content = response.choices[0].message.content

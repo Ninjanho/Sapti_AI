@@ -38,8 +38,8 @@ async def run_identity_builder_cycle():
     """Run a full Identity Builder cycle. Called periodically."""
     logger.info("identity_builder_cycle_start")
     
-    # MINIMUM_NEW_MEMORIES = 3
-    MINIMUM_NEW_MEMORIES = 10
+    MINIMUM_NEW_MEMORIES = 5
+    # MINIMUM_NEW_MEMORIES = 10
 
     
     db = get_supabase_admin()

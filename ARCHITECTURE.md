@@ -186,7 +186,7 @@ Constructs a dynamic system prompt by assembling:
 
 **Processing:**
 1. Fetches recent `memory_nodes` from last userIdentity update and `current_identity` for (n = 50) users.
-2. For every user, if at least (k = 10) new memories are found, uses LLM to forge or incrementally update the `UserIdentity` profile (traits, style, baseline).
+2. For every user, if at least (k = 5) new memories are found, uses LLM to forge or incrementally update the `UserIdentity` profile (traits, style, baseline).
 3. Ensures personality depth grows as the user interacts more.
 
 ### 6(B). Curator (Horse 6B) — Periodic
@@ -202,7 +202,7 @@ Constructs a dynamic system prompt by assembling:
 
 ### 7. Evolver (Horse 7) — Periodic
 
-**Trigger:** Called periodically every t = 12 hour (cron / manual endpoint)
+**Trigger:** Called periodically every t = 6 hour (cron / manual endpoint)
 
 **Processing:**
 1. Counts total interactions (`messages` where role='user')
@@ -296,6 +296,8 @@ New User Signs Up
 | `SUPABASE_JWT_SECRET` | ✅ | JWT secret for token verification |
 | `DEFAULT_LLM_PROVIDER` | ✅ | Default provider for trial chats (e.g., "gemini") |
 | `DEFAULT_LLM_API_KEY` | ✅ | Developer's API key for trial chats |
+| `CUSTOM_API_BASE` | ✅ | Base URL if using other OpenAI-compatible endpoints |
+| `CUSTOM_MODEL_NAME` | ✅ | Model name if using other OpenAI-compatible endpoints |
 | `GEMINI_EMBEDDING_API_KEY` | ✅ | Gemini key for server-side embeddings |
 | `ENCRYPTION_KEY` | ✅ | Fernet key for encrypting user API keys |
 | `CORS_ORIGINS` | ❌ | Allowed origins (default: localhost + vercel) |

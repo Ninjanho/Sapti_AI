@@ -44,6 +44,6 @@ async def generator_node(state: SaptiState) -> dict:
     except Exception as e:
         logger.error("generator_error", error=str(e))
         return {
-            "response": "I'm having a moment — something went wrong on my end. Let me try again.",
+            "response": "I'm having a moment — something went wrong on my end. Please try again after some time.",
             "error": str(e),
         }

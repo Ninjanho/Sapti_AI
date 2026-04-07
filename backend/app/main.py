@@ -69,7 +69,7 @@ async def lifespan(app: FastAPI):
                 break
             except Exception as e:
                 logger.error("evolver_loop_error", error=str(e))
-            await asyncio.sleep(12 * 60 * 60)  # Sleep exactly 12 hours
+            await asyncio.sleep(6 * 60 * 60)  # Sleep exactly 6 hours
 
     async def run_identity_builder():
         await asyncio.sleep(30)  # Gentle 30s stagger

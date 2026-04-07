@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS public.profiles (
     id UUID PRIMARY KEY REFERENCES auth.users(id) ON DELETE CASCADE,
     display_name TEXT,
     avatar_url TEXT,
-    llm_provider TEXT DEFAULT 'gemini',
+    llm_provider TEXT,
     encrypted_api_key TEXT,
     hive_mind_opt_in BOOLEAN DEFAULT true,
     free_chats_used INTEGER DEFAULT 0,

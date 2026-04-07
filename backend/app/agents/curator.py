@@ -83,7 +83,6 @@ async def run_curation_cycle():
 
         llm = get_default_llm_service()
         prompt = DISTILLATION_PROMPT.format(patterns=patterns_text)
-        prompt = DISTILLATION_PROMPT.format(patterns=patterns_text)
         
         # Pydantic Structured Output handles all JSON formatting and extraction flawlessly
         response_model = await llm.fast_extract(prompt, schema=HiveMindInsightList)

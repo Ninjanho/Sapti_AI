@@ -132,7 +132,7 @@ User Message → Perceiver → Rememberer → WorldBuilder → Generator → Res
 
 ## 🔐 API Key Model
 
-- **n (n=4) free trial chats** with the developer's default API key
+- **n (n=1000) free trial chats** with the developer's default API key
 - After trial, users provide their own key (Gemini, OpenAI, or Claude)
 - Keys are encrypted at rest using Fernet
 
