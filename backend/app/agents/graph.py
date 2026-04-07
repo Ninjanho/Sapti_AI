@@ -32,14 +32,15 @@ def build_sapti_graph() -> StateGraph:
     graph.add_node("perceiver", perceiver_node)
     graph.add_node("rememberer", rememberer_node)
     graph.add_node("world_builder", world_builder_node)
-    graph.add_node("generator", generator_node)
+    # graph.add_node("generator", generator_node)        ## Added generator with stream in directly chat.py
 
     # Define edges (linear flow)
     graph.set_entry_point("perceiver")
     graph.add_edge("perceiver", "rememberer")
     graph.add_edge("rememberer", "world_builder")
-    graph.add_edge("world_builder", "generator")
-    graph.add_edge("generator", END)
+    # graph.add_edge("world_builder", "generator")      ## Added generator with stream in directly chat.py
+    # graph.add_edge("generator", END)                  ## Added generator with stream in directly chat.py
+    graph.add_edge("world_builder", END)
 
     return graph
 

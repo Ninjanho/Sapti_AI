@@ -2,6 +2,9 @@
 Sapti AI — Horse 4: Generator Agent
 Generates the LLM response using the dynamic system prompt.
 """
+###### Due to real hardware level chat streaming here, this file is not used for horse 4 generator #######
+###### That's why it is directly implemented in chat.py file #######
+
 
 import structlog
 from app.agents.state import SaptiState

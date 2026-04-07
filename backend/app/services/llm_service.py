@@ -89,44 +89,50 @@ class LLMService:
 
         except Exception as e:
             logger.error("llm_generation_error", error=str(e), provider=self.provider)
-            yield f"\n\n[Sapti encountered an error: {str(e)}]"
+            yield f"\n\n[Sapti encountered an error: I seem to have lost my train of thought due to a brief network hiccup / API error. Let's try that again.]"
 
-    async def generate(
-        self,
-        system_prompt: str,
-        messages: list[dict],
-        temperature: float | None = None,
-        max_tokens: int | None = None,
-    ) -> str:
-        """Generate a non-streaming response."""
-        settings = get_settings()
-        temp = temperature or settings.main_model_temperature
-        tokens = max_tokens or settings.main_model_max_tokens
+#### This entire function was explicitly designed to do generate full response 
+# without streaming tokens from hardware level from api provider,
+ 
+# synchronous generation for the old generator.py node. 
+# Since generator.py is now a museum artifact, this function is is not being used. 
 
-        all_messages = [{"role": "system", "content": system_prompt}] + messages
+    # async def generate(
+    #     self,
+    #     system_prompt: str,
+    #     messages: list[dict],
+    #     temperature: float | None = None,
+    #     max_tokens: int | None = None,
+    # ) -> str:
+    #     """Generate a non-streaming response."""
+    #     settings = get_settings()
+    #     temp = temperature or settings.main_model_temperature
+    #     tokens = max_tokens or settings.main_model_max_tokens
 
-        try:
+    #     all_messages = [{"role": "system", "content": system_prompt}] + messages
+
+    #     try:
             
-            kwargs = {
-                "model": self.models["main"],
-                "messages": all_messages,
-                "stream": False,
-                "temperature": temp,
-                "max_tokens": tokens,
-                "api_key": self.api_key,
-            }
-            if self.api_base:
-                kwargs["api_base"] = self.api_base
+    #         kwargs = {
+    #             "model": self.models["main"],
+    #             "messages": all_messages,
+    #             "stream": False,
+    #             "temperature": temp,
+    #             "max_tokens": tokens,
+    #             "api_key": self.api_key,
+    #         }
+    #         if self.api_base:
+    #             kwargs["api_base"] = self.api_base
             
-            if self.provider == "model research GLM-5":
-                kwargs["extra_body"] = {"chat_template_kwargs": {"enable_thinking": False}}
+    #         if self.provider == "model research GLM-5":
+    #             kwargs["extra_body"] = {"chat_template_kwargs": {"enable_thinking": False}}
                 
-            response = await acompletion(**kwargs)
-            return response.choices[0].message.content
+    #         response = await acompletion(**kwargs)
+    #         return response.choices[0].message.content
 
-        except Exception as e:
-            logger.error("llm_generation_error", error=str(e), provider=self.provider)
-            raise
+    #     except Exception as e:
+    #         logger.error("llm_generation_error", error=str(e), provider=self.provider)
+    #         raise
 
     async def fast_extract(self, prompt: str, schema: type["BaseModel"] | None = None):
         """Use the fast/cheap model for extraction tasks (intent, memory)."""

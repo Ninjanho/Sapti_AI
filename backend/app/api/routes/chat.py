@@ -111,17 +111,72 @@ async def chat_stream(
             # Run the graph
             result = await graph.ainvoke(initial_state.model_dump())
 
-            response_text = result.get("response", "")
+            # # --- OLD ARTIFICIAL STREAMING ---
+            # response_text = result.get("response", "")
+            #
+            # # Stream the response in chunks for smooth animation
+            # chunk_size = 3
+            # for i in range(0, len(response_text), chunk_size):
+            #     chunk = response_text[i:i + chunk_size]
+            #     yield {
+            #         "event": "token",
+            #         "data": json.dumps({"content": chunk}),
+            #     }
+            #     await asyncio.sleep(0.02)
 
-            # Stream the response in chunks for smooth animation
-            chunk_size = 3
-            for i in range(0, len(response_text), chunk_size):
-                chunk = response_text[i:i + chunk_size]
+######### ------------- NEW HARDWARE STREAMING ------------- #########
+            system_prompt = result.get("system_prompt")
+            # Fail-safe identical to the original generator block
+            if not system_prompt:
+                logger.error("generator_no_prompt")
+                response_text = "I'm having trouble gathering my thoughts. Could you try again?"
                 yield {
                     "event": "token",
-                    "data": json.dumps({"content": chunk}),
+                    "data": json.dumps({"content": response_text}),
                 }
-                await asyncio.sleep(0.02)
+            else:
+                from app.services.llm_service import LLMService
+                llm_engine = LLMService(
+                    provider=provider,
+                    api_key=resolved_api_key,
+                )
+                
+                # Build context for inference
+                messages = []
+                for msg in initial_state.conversation_history[-10:]:
+                    messages.append({
+                        "role": msg.get("role", "user"),
+                        "content": msg.get("content", ""),
+                    })
+                messages.append({"role": "user", "content": chat_request.message})
+                
+                logger.info("generator_start", user_id=user_id)
+
+################# Horse 4 generator executes here outside from generator.py due to real hardware level chat streaming here #################
+                response_text = ""
+                # Native fast streaming directly hooked to LiteLLM chunk yields
+                try:
+                    stream = llm_engine.generate_stream(
+                        system_prompt=system_prompt,
+                        messages=messages,
+                    )
+                    async for chunk in stream:
+                        response_text += chunk
+                        yield {
+                            "event": "token",
+                            "data": json.dumps({"content": chunk}),
+                        }
+                    logger.info("generator_complete", response_length=len(response_text))
+                except Exception as e:
+                    logger.error("generator_error", error=str(e))
+                    response_text = "\n\nI'm having a moment — something went wrong on my end. Please try again after some time."
+                    yield {
+                        "event": "token",
+                        "data": json.dumps({"content": response_text}),
+                    }
+                    
+            # Place the compiled text back into the graph payload so Chronicler has context
+            result["response"] = response_text
 
             # Store assistant response
             msg_result = db.table("messages").insert({
