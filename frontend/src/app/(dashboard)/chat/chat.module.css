@@ -4,7 +4,7 @@
 
 .container {
   display: flex;
-  height: 100vh;
+  height: 100dvh;
   overflow: hidden;
 }
 
@@ -14,7 +14,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 100dvh;
   gap: var(--space-md);
   text-align: center;
 }
@@ -36,7 +36,7 @@
 .sidebar {
   width: var(--sidebar-width);
   min-width: var(--sidebar-width);
-  height: 100vh;
+  height: 100dvh;
   background: var(--bg-secondary);
   border-right: 1px solid var(--border-subtle);
   display: flex;
@@ -161,7 +161,7 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 100dvh;
   overflow: hidden;
 }
 
@@ -282,47 +282,137 @@
 }
 
 .messageBubble {
-  max-width: 75%;
+  max-width: 85%;
   border-radius: var(--radius-lg);
   padding: var(--space-md) var(--space-lg);
 }
 
 .messageUser .messageBubble {
-  background: var(--accent-primary);
-  color: white;
-  border-bottom-right-radius: var(--radius-sm);
+  background: #2a2a2a;
+  color: #ededed;
+  border-radius: 20px 20px 4px 20px;
 }
 
 .messageAssistant .messageBubble {
-  background: var(--bg-glass);
-  border: 1px solid var(--border-subtle);
-  border-bottom-left-radius: var(--radius-sm);
+  background: transparent;
+  border: none;
+  padding: var(--space-xs) 0;
+  max-width: 100%;
 }
 
 .messageContent {
-  font-size: 14px;
+  font-size: 15px;
   line-height: 1.7;
   white-space: pre-wrap;
   word-break: break-word;
 }
 
-/* --- Thinking dots --- */
+.messageContent pre {
+  max-width: 100%;
+  overflow-x: auto;
+  border-radius: 8px;
+  margin: 12px 0;
+  /* Ensures deep code tokens don't break flex containers */
+  min-width: 0; 
+}
+
+.messageContent code {
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+.messageContent pre code {
+  background-color: transparent;
+  padding: 0;
+}
+
+
+/* --- Code Block Formatting --- */
+.codeBlockWrapper {
+  margin: 16px 0;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #1e1e1e;
+}
+
+.codeBlockHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  background: #2d2d2d;
+  color: #a0a0a0;
+  font-size: 11px;
+  font-family: var(--font-sans);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.codeLanguage {
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+
+.copyButton {
+  display: flex;
+  align-items: center;
+  background: transparent;
+  border: none;
+  color: #a0a0a0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  opacity: 0.7;
+}
+
+.copyButton:hover {
+  opacity: 1;
+  color: white;
+}
+
+/* --- Fluid Thinking Process --- */
 .thinking {
   display: inline-flex;
-  gap: 4px;
+  gap: 5px;
+  align-items: center;
+  padding: 8px 4px;
 }
 
 .thinking span {
-  animation: pulse 1.4s ease-in-out infinite;
-  color: var(--text-tertiary);
+  width: 8px;
+  height: 8px;
+  background-color: var(--text-tertiary);
+  border-radius: 50%;
+  animation: pulseFluid 1.4s infinite ease-in-out both;
+}
+
+.thinking span:nth-child(1) {
+  animation-delay: -0.32s;
 }
 
 .thinking span:nth-child(2) {
-  animation-delay: 0.2s;
+  animation-delay: -0.16s;
 }
 
 .thinking span:nth-child(3) {
-  animation-delay: 0.4s;
+  animation-delay: 0s;
+}
+
+@keyframes pulseFluid {
+  0%, 80%, 100% {
+    transform: scale(0);
+    background-color: var(--text-tertiary);
+    opacity: 0.3;
+  }
+  40% {
+    transform: scale(1);
+    background-color: var(--text-primary);
+    opacity: 1;
+    box-shadow: 0 0 6px var(--text-tertiary);
+  }
 }
 
 /* --- Input Area --- */
